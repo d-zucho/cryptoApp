@@ -1,0 +1,17 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100vh;
+  font-size: calc(14px + 0.38vw);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
