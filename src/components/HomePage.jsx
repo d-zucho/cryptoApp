@@ -1,7 +1,10 @@
+// import { Navbar } from '../components'
+
 const HomePage = () => {
   return (
     <div>
-      <h3>HomePage</h3>
+      {/* <Navbar /> */}
+      <h1>HomePage</h1>
     </div>
   )
 }

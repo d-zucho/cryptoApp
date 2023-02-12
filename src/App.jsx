@@ -21,13 +21,13 @@ function App() {
           <div className='routes'>
             <Routes>
               <Route exact path='/' element={<HomePage />} />
-              <Route exact path='/echanges' element={<Exchanges />} />
+              <Route exact path='/exchanges' element={<Exchanges />} />
               <Route
                 exact
-                path='/cryprotcurrencies'
+                path='/cryptocurrencies'
                 element={<Cryptocurrencies />}
               />
-              <Route exact path='/' element={<News />} />
+              <Route exact path='/news' element={<News />} />
             </Routes>
           </div>
         </Layout>
