@@ -9,6 +9,7 @@ import {
   News,
   CryptoDetails,
 } from './components'
+import 'antd/dist/reset.css'
 
 function App() {
   return (
@@ -32,20 +33,20 @@ function App() {
             </Routes>
           </div>
         </Layout>
-      </div>
-      <div className='footer'>
-        <Typography.Title
-          level={5}
-          style={{ color: 'white', textAlign: 'center' }}
-        >
-          Cryptoverse <br />
-          All rights reserved
-        </Typography.Title>
-        <Space>
-          <Link to='/'>Home</Link>
-          <Link to='/exchanges'>Exchanges</Link>
-          <Link to='/news'>News</Link>
-        </Space>
+        <div className='footer'>
+          <Typography.Title
+            level={5}
+            style={{ color: 'white', textAlign: 'center' }}
+          >
+            Cryptoverse <br />
+            All rights reserved
+          </Typography.Title>
+          <Space style={{ color: 'rgb(0, 113, 189)' }}>
+            <Link to='/'>Home</Link>
+            <Link to='/exchanges'>Exchanges</Link>
+            <Link to='/news'>News</Link>
+          </Space>
+        </div>
       </div>
     </div>
   )
