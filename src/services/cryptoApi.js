@@ -14,6 +14,8 @@ export const cryptoApi = createApi({
   reducerPath: 'cryptoApi', // name of the reducer
   baseQuery: fetchBaseQuery({ baseUrl }), // fetchBaseQuery is a fetch wrapper
   endpoints: (builder) => ({
+    //** Following includes the different endpoints:  getCryptos, getCryptoNews.... */
+
     // create endpoints with a builder which has a query function
     getCryptos: builder.query({
       query: () => createRequest('/coins'), // createRequest is a function that returns an object with the url and headers with exchanges as the endpoint
