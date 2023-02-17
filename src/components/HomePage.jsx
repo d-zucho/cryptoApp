@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
 import { Typography, Row, Col, Statistic } from 'antd'
+import { Cryptocurrencies, News } from '../components'
 import millify from 'millify'
 
 // redux tools
 import { useGetCryptosQuery } from '../services/cryptoApi'
+
+const { Title } = Typography
 
 const HomePage = () => {
   const { data, isFetching } = useGetCryptosQuery() // this is a hook that we can use to get the data from the endpoint
@@ -11,15 +14,17 @@ const HomePage = () => {
   // isFetching is a boolean that is true when the data is being fetched (data is undefined until returned ) and false when the data is returned
   // data is the data that is returned from the endpoint
 
-  const globalStats = data?.data?.stats // the ? is a short circuit operator that checks if the data exists before accessing the data property
-  // the second ? is a short circuit operator that checks if the data property exists before accessing the stats property
+  const globalStats = data?.data?.stats
+  if (isFetching || !globalStats) {
+    return 'Loading...'
+  }
   console.log(globalStats)
 
   return (
     <>
-      <Typography.Title level={2} className='heading'>
+      <Title level={2} className='heading'>
         Global Crypto Stats
-      </Typography.Title>
+      </Title>
       <Row>
         <Col span={12}>
           <Statistic title='Total Cryptocurrencies' value={globalStats.total} />
@@ -27,36 +32,43 @@ const HomePage = () => {
         <Col span={12}>
           <Statistic
             title='Total Exchanges'
-            value={millify(globalStats.totalExchanges)}
+            value={globalStats.totalExchanges}
           />
         </Col>
         <Col span={12}>
           <Statistic
             title='Total Market Cap'
-            value={millify(globalStats.totalMarketCap)}
+            value={globalStats.totalMarketCap}
           />
         </Col>
         <Col span={12}>
           <Statistic
             title='Total 24 Volume'
-            value={millify(globalStats.total24hVolume)}
+            value={globalStats.total24hVolume}
           />
         </Col>
         <Col span={12}>
-          <Statistic
-            title='Total Markets'
-            value={millify(globalStats.totalMarkets)}
-          />
+          <Statistic title='Total Markets' value={globalStats.totalMarkets} />
         </Col>
       </Row>
       <div className='home-heading-container'>
-        <Typography.Title level={2} className='home-title'>
+        <Title level={2} className='home-title'>
           Top 10 Cryptocurrencies in the world
-        </Typography.Title>
-        <Typography.Title level={3} className='show-more'>
+        </Title>
+        <Title level={3} className='show-more'>
           <Link to='/cryptocurrencies'>Show More</Link>
-        </Typography.Title>
+        </Title>
       </div>
+      {/* <Cryptocurrencies simplified /> */}
+      <div className='home-heading-container'>
+        <Title level={2} className='home-title'>
+          Latest Crypto News
+        </Title>
+        <Title level={3} className='show-more'>
+          <Link to='/news'>Show More</Link>
+        </Title>
+      </div>
+      {/* <News simplified /> */}
     </>
   )
 }
