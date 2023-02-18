@@ -9,7 +9,7 @@ import { useGetCryptosQuery } from '../services/cryptoApi'
 const { Title } = Typography
 
 const HomePage = () => {
-  const { data, isFetching } = useGetCryptosQuery() // this is a hook that we can use to get the data from the endpoint
+  const { data, isFetching } = useGetCryptosQuery(10) // this is a hook that we can use to get the data from the endpoint
   // this destructures the data and isFetching properties from the useGetCryptosQuery function
   // isFetching is a boolean that is true when the data is being fetched (data is undefined until returned ) and false when the data is returned
   // data is the data that is returned from the endpoint
@@ -18,7 +18,6 @@ const HomePage = () => {
   if (isFetching || !globalStats) {
     return 'Loading...'
   }
-  console.log(globalStats)
 
   return (
     <>
@@ -59,7 +58,7 @@ const HomePage = () => {
           <Link to='/cryptocurrencies'>Show More</Link>
         </Title>
       </div>
-      {/* <Cryptocurrencies simplified /> */}
+      <Cryptocurrencies simplified />
       <div className='home-heading-container'>
         <Title level={2} className='home-title'>
           Latest Crypto News
