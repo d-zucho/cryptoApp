@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Typography, Row, Col, Statistic } from 'antd'
-import { Cryptocurrencies, News } from '../components'
+import { Cryptocurrencies, News, Loader } from '../components'
 import millify from 'millify'
 
 // redux tools
@@ -16,7 +16,7 @@ const HomePage = () => {
 
   const globalStats = data?.data?.stats
   if (isFetching || !globalStats) {
-    return 'Loading...'
+    return <Loader />
   }
 
   return (
@@ -67,7 +67,6 @@ const HomePage = () => {
           <Link to='/news'>Show More</Link>
         </Title>
       </div>
-      {/* <News simplified /> */}
     </>
   )
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Card, Row, Col, Input } from 'antd'
 
 import { useGetCryptosQuery } from '../services/cryptoApi'
+import { SearchCryptoInput } from '../components'
 
 const Cryptocurrencies = ({ simplified }) => {
   const count = simplified ? 10 : 50
@@ -18,6 +19,10 @@ const Cryptocurrencies = ({ simplified }) => {
 
   return (
     <>
+      <div className='search-crypto-container'>
+        <SearchCryptoInput />
+      </div>
+
       <Row gutter={[32, 32]} className='crypto-card-container'>
         {cryptos.map((currency) => (
           <Col
